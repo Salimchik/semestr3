@@ -5,18 +5,10 @@ tests <- read.table(
   stringsAsFactors = FALSE
 )
 
-tests$gender <- ifelse(
-  tests$gender == 0,
-  "Unanswered",
-  ifelse(
-    tests$gender == 1,
-    "Male",
-    ifelse(
-      tests$gender == 2,
-      "Female",
-      "Other"
-    )
-  )
+tests$gender <- factor(
+  tests$gender,
+  levels = c(0, 1, 2, 3),
+  labels = c("Unanswered", "Male", "Female", "Other")
 )
 
 tests$extroversion <- round(
